@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap");
+
+body {
+  font-family: "Space Grotesk", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: hsl(240 10% 3.9%);
+  margin: 0;
+  color: hsl(240 4.8% 95.9%);
+}
+
+.container {
+  padding: 24px 32px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid hsl(240 3.7% 15.9%);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.toggle-tab {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  background: hsl(240, 4%, 16%);
+  padding: 4px;
+  border-radius: 6px;
+  width: fit-content;
+  display: flex;
+  gap: 4px;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  color: hsl(0, 0%, 94%);
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  background: transparent;
+
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.tab.active {
+  background-color: hsl(240, 10%, 4%);
+}
+
+#password-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid hsl(120, 61%, 50%);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#password {
+  font-size: 20px;
+  font-weight: bold;
+  color: hsl(120, 61%, 50%);
+  font-family: "Fira Code", "Courier New", Courier, monospace;
+  margin-left: 10px;
+}
+
+.icon {
+  color: hsl(120, 61%, 50%);
+}
+
+.generate-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: hsl(0, 0%, 94%);
+  cursor: pointer;
+  background: hsl(240, 4%, 16%);
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
