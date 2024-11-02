@@ -5,34 +5,37 @@ function generatePassword(groups) {
   const vowels = "aeiou";
   const numbers = "0123456789";
   const bannedWords = new Set(ban_worlds);
-  let password = "";
   const numberPosition = Math.floor(Math.random() * groups);
   const uppercasePosition = Math.floor(Math.random() * groups);
+  debugger;
 
-  for (let i = 0; i < groups; i++) {
-    let group;
-    do {
-      group = `${getRandomChar(consonants)}${getRandomChar(
-        vowels
-      )}${getRandomChar(consonants)}${getRandomChar(vowels)}${getRandomChar(
-        consonants
-      )}`;
-    } while (bannedWords.has(group));
+  const createGroup = (index) => {
+    let group = `${getRandomChar(consonants)}${getRandomChar(
+      vowels
+    )}${getRandomChar(consonants)}${getRandomChar(consonants)}${getRandomChar(
+      vowels
+    )}${getRandomChar(consonants)}`;
 
-    if (i === numberPosition) {
-      group += getRandomChar(numbers);
-    } else {
-      group += getRandomChar(consonants);
+    if (bannedWords.has(group)) {
+      return createGroup(index);
     }
 
-    if (i === uppercasePosition) {
+    if (index === numberPosition) {
+      group = group.slice(0, -1) + getRandomChar(numbers);
+    }
+
+    if (index === uppercasePosition) {
       group = group.charAt(0).toUpperCase() + group.slice(1);
     }
 
-    password += group + (i < groups - 1 ? "-" : "");
-  }
+    return group;
+  };
 
-  return password;
+  const groupsArray = Array.from({ length: groups }, (_, i) => createGroup(i));
+
+  console.log(groupsArray);
+
+  return groupsArray.join("-");
 }
 
 function getRandomChar(characters) {
@@ -61,6 +64,7 @@ function handleTabClick(event) {
 }
 
 function handleGenerateClick() {
+  console.log(generateButtonEl);
   const password = generatePassword(selectedGroups);
   document.querySelector("#password").textContent = password;
   resetIcon();
@@ -92,9 +96,8 @@ document.querySelectorAll(".tab").forEach((button) => {
   button.addEventListener("click", handleTabClick);
 });
 
-document
-  .querySelector("#generate")
-  .addEventListener("click", handleGenerateClick);
+const generateButtonEl = document.querySelector("#generate");
+generateButtonEl.addEventListener("click", handleGenerateClick);
 
 document
   .querySelector("#password-container")
